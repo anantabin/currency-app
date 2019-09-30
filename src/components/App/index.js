@@ -9,11 +9,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       error: null,
-      data: localStorage.getItem('data')?JSON.parse(localStorage.getItem('data')):[],
-      currency: localStorage.getItem('currency')?JSON.parse(localStorage.getItem('currency')):["IDR", "EUR", "GBP", "SGD"],
-      base: localStorage.getItem('base')?JSON.parse(localStorage.getItem('base')):"USD",
+      data: localStorage.getItem("data")
+        ? JSON.parse(localStorage.getItem("data"))
+        : [],
+      currency: localStorage.getItem("currency")
+        ? JSON.parse(localStorage.getItem("currency"))
+        : ["IDR", "EUR", "GBP", "SGD"],
+      base: localStorage.getItem("base")
+        ? JSON.parse(localStorage.getItem("base"))
+        : "USD",
       isFetching: true,
-      base_currency: localStorage.getItem('base_currency')?JSON.parse(localStorage.getItem('base_currency')):10,
+      base_currency: localStorage.getItem("base_currency")
+        ? JSON.parse(localStorage.getItem("base_currency"))
+        : 10,
       modalOpen: false,
       newCard: ""
     };
@@ -201,8 +209,8 @@ class App extends React.Component {
             base: base,
             isFetching: false
           });
-          localStorage.setItem('base', JSON.stringify(base));
-          localStorage.setItem('data', JSON.stringify(hasil));
+          localStorage.setItem("base", JSON.stringify(base));
+          localStorage.setItem("data", JSON.stringify(hasil));
         },
         error => {
           this.setState({ error });
@@ -234,7 +242,7 @@ class App extends React.Component {
       isFetching: true,
       base_currency: data.target.value
     });
-    localStorage.setItem('base_currency', JSON.stringify(data.target.value));
+    localStorage.setItem("base_currency", JSON.stringify(data.target.value));
 
     this.getData();
   }
@@ -243,7 +251,7 @@ class App extends React.Component {
     this.setState({
       currency: filter
     });
-    localStorage.setItem('currency', JSON.stringify(filter));
+    localStorage.setItem("currency", JSON.stringify(filter));
   };
 
   toggleModal = event => {
@@ -259,10 +267,10 @@ class App extends React.Component {
     this.setState({
       isFetching: true,
       currency: arr,
-      newCard:'',
+      newCard: "",
       modalOpen: !this.state.modalOpen
     });
-    localStorage.setItem('currency', JSON.stringify(arr));
+    localStorage.setItem("currency", JSON.stringify(arr));
   };
 
   renderItem = () => {
@@ -277,12 +285,12 @@ class App extends React.Component {
       />
     ));
   };
-  renderOption = (data) => {
+  renderOption = data => {
     return (
       <option value={data["name"]} key={data["name"]}>
         {data["fullname"]}
       </option>
-    )
+    );
   };
   render() {
     const { base_currency, data, modalOpen } = this.state;
@@ -296,6 +304,9 @@ class App extends React.Component {
         <div className="container-fluid">
           <Navigation />
           <div className="row justify-content-center">
+            {/* 
+            render form
+             */}
             <div className="col-md-10 ">
               <label>Base Currency : </label>
               <form className="form-row form-modal">
@@ -327,6 +338,9 @@ class App extends React.Component {
                 </div>
               </form>
             </div>
+            {/* 
+            Render card based on array currency
+             */}
             <div className="col-md-10 col-xs-12">
               <div className="row ">
                 {this.state.data && this.state.isFetching == false
@@ -342,6 +356,9 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        {/* 
+        this modal used to choose a card you want to show
+         */}
         <Modal open={modalOpen} onClose={this.toggleModal}>
           <div className="form-modal">
             <div>
