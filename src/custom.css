@@ -1,0 +1,87 @@
+* {
+  font-family: Quicksand;
+  color: #aca8a8;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #121e26;
+}
+.txt-success{
+  color:#266B58;
+}
+.bg-dark {
+  background-color: #121e26 !important;
+}
+.bg-secondary {
+  background-color: #1C2630 !important;
+}
+.form-control {
+  background-color: #1c2630;
+  color: #aca8a8;
+  border-radius: 10px;
+  border: 0px;
+  padding: 0 20px;
+}
+.btn {
+  padding: 5px 30px;
+  border-radius: 25px;
+  background-color: #266B58;
+  border: 1px solid #266B58;
+  color: #aca8a8;
+}
+
+.form-control:focus {
+  background-color: #1c2630;
+  color: #aca8a8;
+}
+.cst-card{
+  width:100%;
+  margin:10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.cst-card div div span {
+  font-size: 15px;
+}
+.cst-card div p {
+  font-size: 13px;
+  margin:0px;
+}
+.cst-card div p i{
+  font-size: 15px;
+  margin: 0px 3px;
+  color:#266B58;
+}
+.add-on-img{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.result-value{
+  font-size: 15px;
+}
+.close-btn{
+  position: absolute;
+  z-index: 1000;
+  right: 7px;
+  top:0;
+  cursor: pointer;
+  background-color: transparent;
+  border:0px;
+}
+.styles_modal__gNwvD{
+  background-color: #1C2630;
+  width: 100%;
+}
+.form-modal div{
+  margin: 10px 0;
+}
+.currency-btn{
+  margin: 10px 0 20px;
+}
