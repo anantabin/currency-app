@@ -363,7 +363,6 @@ class App extends React.Component {
                 </div>
               </form>
             </div>
-            {/* <Form base={base} value={base_currency} data={data} /> */}
             <div className="col-md-10 col-xs-12">
               <div className="row ">
                 {this.state.data && this.state.isFetching == false
