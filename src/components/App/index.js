@@ -7,6 +7,7 @@ import Card from "../Card";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    // Because this application didn't have a login and register. I decided to save the data to local storage. 
     this.state = {
       error: null,
       data: localStorage.getItem("data")
@@ -35,6 +36,9 @@ class App extends React.Component {
       .then(res => res.json())
       .then(
         result => {
+          // the return value from the API little bit weird 
+          // then I decided to convert it to my array with JSON like structure 
+          // so it would be easier to process the data
           let hasil = [];
           hasil = [
             {
