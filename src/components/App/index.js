@@ -26,11 +26,9 @@ class App extends React.Component {
       modalOpen: false,
       newCard: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAddCard = this.handleAddCard.bind(this);
-    this.baseCurrencyChange = this.baseCurrencyChange.bind(this);
+    this.getData();
   }
-  getData(base = this.state.base) {
+  getData = (base = this.state.base) => {
     let apiUrl = "https://api.exchangeratesapi.io/latest?base=" + base;
     fetch(apiUrl)
       .then(res => res.json())
@@ -223,25 +221,20 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.getData();
-    this.timer = setInterval(() => this.getData(), 5000);
   }
-  componentWillUnmount() {
-    clearInterval(this.timer);
-    this.timer = null;
-  }
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       isFetching: true
     });
     this.getData(event.target.value);
   }
-  handleAddCard(event) {
+  handleAddCard = (event) => {
     this.setState({
       newCard: event.target.value
     });
   }
 
-  baseCurrencyChange(data) {
+  baseCurrencyChange = (data) => {
     this.setState({
       isFetching: true,
       base_currency: data.target.value
@@ -250,7 +243,7 @@ class App extends React.Component {
 
     this.getData();
   }
-  handleDeleteCard = value => {
+  handleDeleteCard = (value) => {
     let filter = this.state.currency.filter(currency => currency !== value);
     this.setState({
       currency: filter
@@ -258,16 +251,15 @@ class App extends React.Component {
     localStorage.setItem("currency", JSON.stringify(filter));
   };
 
-  toggleModal = event => {
+  toggleModal = (event) => {
     event.preventDefault();
     this.setState({ modalOpen: !this.state.modalOpen });
   };
-  addCard = event => {
+  addCard = (event) => {
     event.preventDefault();
     let arr = this.state.currency;
     let value = this.state.newCard;
     arr.push(value);
-    console.log(value);
     this.setState({
       isFetching: true,
       currency: arr,
@@ -289,7 +281,7 @@ class App extends React.Component {
       />
     ));
   };
-  renderOption = data => {
+  renderOption = (data) => {
     return (
       <option value={data["name"]} key={data["name"]}>
         {data["fullname"]}
